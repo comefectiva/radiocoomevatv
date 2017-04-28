@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "classmap": [
+            "App/Core",
+            "App/Controllers",
+            "App/Middlewares"
+        ]
+    },
+    "require": {
+        "firebase/php-jwt": "dev-master",
+        "league/csv": "^8.2",
+        "codeguy/upload": "^1.3"
+    }
+}

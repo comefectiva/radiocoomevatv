@@ -1,0 +1,11 @@
+.admin-page{
+    margin-left: 256px;
+}
+
+.admin-page h1{
+    margin-left: 10px;
+}
+
+td{
+    text-transform: capitalize;
+}
