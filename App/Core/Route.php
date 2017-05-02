@@ -23,7 +23,9 @@ class Route{
      */
     public static function get($route, $function, $requireAuth){
         self::$validGETRoutes[] = $route;
-        if($_SERVER['REQUEST_URI'] == $route && $_SERVER['REQUEST_METHOD'] === 'GET'){
+        //Request matching
+        $match = explode('?', $_SERVER['REQUEST_URI']);
+        if($match[0] == $route && $_SERVER['REQUEST_METHOD'] === 'GET'){
             if($requireAuth['requireAuth'] === false){
                 $function->__invoke();
             }else{

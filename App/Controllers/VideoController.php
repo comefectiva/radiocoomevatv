@@ -16,8 +16,13 @@ class VideoController extends Controller{
         return json_encode($videos);
     }
 
-    public static function getVideo($id){
+    public static function get($id){
         $video = self::getOne("SELECT id,name,image,video,url,sector,requireLogin,created_at FROM videos WHERE id=$id");
+        return json_encode($video);
+    }
+
+    public static function getByUrl($url){
+        $video = self::getOne("SELECT id,name,image,video,url,sector,requireLogin,created_at FROM videos WHERE url='$url'");
         return json_encode($video);
     }
 

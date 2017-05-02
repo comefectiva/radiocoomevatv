@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-04-2017 a las 23:37:50
--- Versión del servidor: 5.7.17-0ubuntu0.16.04.2
+-- Tiempo de generación: 02-05-2017 a las 09:38:00
+-- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.15-0ubuntu0.16.04.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -126,8 +126,50 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`id`, `name`, `type`, `created_at`, `updated_at`) VALUES
-(1, '1493269200-1.', '', '2017-04-28 04:28:14', NULL),
-(2, '1493269200-2.jpg', '', '2017-04-28 04:30:01', NULL);
+(1, '1493269200-1.jpg', '', '2017-04-28 04:28:14', NULL),
+(2, '1493269200-2.jpg', '', '2017-04-28 04:30:01', NULL),
+(3, '1493614800.jpg', '', '2017-05-01 23:05:07', NULL),
+(4, '1493614800-1.jpg', '', '2017-05-01 23:05:58', NULL),
+(5, '1493614800-2.jpg', '', '2017-05-01 23:06:16', NULL),
+(6, '1493614800-3.jpg', '', '2017-05-01 23:13:13', NULL),
+(7, '1493614800-4.jpg', '', '2017-05-01 23:13:37', NULL),
+(8, '1493614800-5.jpg', '', '2017-05-01 23:14:08', NULL),
+(9, '1493614800-6.jpg', '', '2017-05-01 23:19:13', NULL),
+(10, '1493614800-7.jpg', '', '2017-05-01 23:19:53', NULL),
+(11, '1493614800-8.jpg', '', '2017-05-01 23:20:11', NULL),
+(12, '1493614800-9.jpg', '', '2017-05-01 23:28:34', NULL),
+(13, '1493614800-10.jpg', '', '2017-05-01 23:32:03', NULL),
+(14, '1493614800-11.jpg.jpg', '', '2017-05-01 23:34:57', NULL),
+(15, '1493614800-12.jpg.jpg', '', '2017-05-01 23:36:35', NULL),
+(16, '1493614800-13.jpg.jpg', '', '2017-05-01 23:38:27', NULL),
+(17, '1493614800-14.jpg.jpg', '', '2017-05-01 23:42:37', NULL),
+(18, '1493614800-15.jpg.jpg', '', '2017-05-01 23:43:36', NULL),
+(19, '1493614800-16.jpg.jpg', '', '2017-05-01 23:47:07', NULL),
+(20, '1493614800-17.jpg.jpg', '', '2017-05-01 23:48:11', NULL),
+(21, '1493614800-18.jpg.jpg', '', '2017-05-01 23:49:06', NULL),
+(22, '1493614800-19.jpg.jpg', '', '2017-05-01 23:50:27', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_bin NOT NULL,
+  `mail` varchar(255) COLLATE utf8_bin NOT NULL,
+  `password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `mail`, `password`, `active`, `created_at`) VALUES
+(1, 'RadioCoomeva', 'web@comunicacionefectiva.com', '$2a$04$JfSDap0inRbrlt76OyKOy.EbQoFVUN20CwrILpLPB/WgfH7t8.YFy', 1, '2017-05-01 18:15:08');
 
 -- --------------------------------------------------------
 
@@ -138,6 +180,7 @@ INSERT INTO `media` (`id`, `name`, `type`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `videos` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_bin NOT NULL,
+  `content` text COLLATE utf8_bin,
   `image` int(11) NOT NULL,
   `video` int(11) NOT NULL,
   `url` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -151,15 +194,15 @@ CREATE TABLE `videos` (
 -- Volcado de datos para la tabla `videos`
 --
 
-INSERT INTO `videos` (`id`, `name`, `image`, `video`, `url`, `sector`, `requireLogin`, `created_at`, `updated_at`) VALUES
-(4, 'video 1', 1, 2, '/video/1', 'Otro', 0, '2017-04-27 19:24:38', NULL),
-(7, 'video 1', 1, 2, '/video/2', 'Otro', 0, '2017-04-27 19:44:10', NULL),
-(9, 'video 1', 1, 2, '/video/3', 'Otro', 0, '2017-04-27 19:45:04', NULL),
-(11, 'video 1', 1, 2, '/video/4', 'Otro', 0, '2017-04-27 19:45:48', NULL),
-(12, 'video 1', 1, 2, '/video/5', 'Otro', 0, '2017-04-27 19:46:46', NULL),
-(14, 'video 1', 1, 2, '/video/6', 'Otro', 0, '2017-04-27 19:49:04', NULL),
-(15, 'video 1', 1, 2, '/video/7', 'Otro', 0, '2017-04-27 19:51:19', NULL),
-(16, 'video 1', 1, 2, '/video/8', 'Otro', 0, '2017-04-27 19:51:46', NULL);
+INSERT INTO `videos` (`id`, `name`, `content`, `image`, `video`, `url`, `sector`, `requireLogin`, `created_at`, `updated_at`) VALUES
+(4, 'video 1', NULL, 1, 2, '/video/1', 'Otro', 0, '2017-04-27 19:24:38', NULL),
+(7, 'video 1', NULL, 1, 2, '/video/2', 'Otro', 0, '2017-04-27 19:44:10', NULL),
+(9, 'video 1', NULL, 1, 2, '/video/3', 'Otro', 0, '2017-04-27 19:45:04', NULL),
+(11, 'video 1', NULL, 1, 2, '/video/4', 'Otro', 0, '2017-04-27 19:45:48', NULL),
+(12, 'video 1', NULL, 1, 2, '/video/5', 'Otro', 0, '2017-04-27 19:46:46', NULL),
+(14, 'video 1', NULL, 1, 2, '/video/6', 'Otro', 0, '2017-04-27 19:49:04', NULL),
+(15, 'video 1', NULL, 1, 2, '/video/7', 'Otro', 0, '2017-04-27 19:51:19', NULL),
+(16, 'video 1', NULL, 1, 2, '/video/8', 'Otro', 0, '2017-04-27 19:51:46', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -176,6 +219,13 @@ ALTER TABLE `customLogin`
 --
 ALTER TABLE `media`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `mail` (`mail`);
 
 --
 -- Indices de la tabla `videos`
@@ -197,12 +247,17 @@ ALTER TABLE `customLogin`
 -- AUTO_INCREMENT de la tabla `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -18,7 +18,7 @@ class Database {
     /**
      * @return PDO Connection
      */
-    private function con() {
+    private static function con() {
         $pdo = new PDO("mysql:host=".self::$host.";dbname=".self::$dbName.";charset=utf8", self::$user, self::$pass);
         $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -48,7 +48,7 @@ class Database {
     public static function query($query, $params = array()) {
         $stmt = self::con()->prepare($query);
         $stmt->execute($params);
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
     /**

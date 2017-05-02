@@ -44,6 +44,6 @@ class Controller extends Database {
         } catch (Exception $e) {
             return array("error"=>true, "message"=>$file->getErrors(), "name"=>$name, "ext"=>$file->getExtension());
         }
-        return array('error'=>false, "message"=>"Archivo subido exitosamente", "name"=>$name);
+        return array('error'=>false, "message"=>"Archivo subido exitosamente", "name"=>$name.'.'.$ext);
     }
 }

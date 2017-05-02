@@ -1,6 +1,9 @@
 <?php
 namespace App\Routes;
 
+
+error_reporting(E_ALL);
+
 use App\Controllers\CustomLogin\CustomLogin;
 use App\Controllers\HomeController\HomeController;
 use App\Controllers\MediaController\MediaFileController;
@@ -14,7 +17,7 @@ $route = new Route();
 //App Routes, if you want to create a new route please use relative paths (like /route/to/create)
 
 $route::get('/', function(){
-    echo HomeController::CreateView('Index');
+    //echo HomeController::CreateView('Index');
 }, array('requireAuth' => false));
 
 // API ROUTES
@@ -44,7 +47,16 @@ $route::post('/api/users', function(){
  * if u need the entire list of videos just do the raw request
  */
 $route::get('/api/videos', function(){
-    echo VideoController::getAll();
+    if(isset($_GET['id'])){
+        echo VideoController::get($_GET['id']);
+    }else{
+        echo VideoController::getAll();
+    }
+}, array('requireAuth' => false));
+$route::get('/api/videos/url', function(){
+    if(isset($_GET['url'])){
+        echo VideoController::getByUrl($_GET['url']);
+    }
 }, array('requireAuth' => false));
 $route::post('/api/videos', function(){
     $data = file_get_contents("php://input");

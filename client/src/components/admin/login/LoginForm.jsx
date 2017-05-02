@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
-import { login } from '../../actions/authActions';
+import { login } from '../../../actions/authActions';
 
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
@@ -66,8 +66,8 @@ class LoginForm extends React.Component{
                 isLoading: true
             });
             this.props.login(this.state).then(
-                (res) => this.context.router.push('/admin/home'),
-                (err) => this.setState({ errorLogin: 'Información Inválida', isLoading: false })
+                (res) => this.context.router.push('/admin/video'),
+                (err) => this.setState({ errorLogin: true, isLoading: false })
             );
         }
     }

@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/authActions';
+import PropTypes from 'prop-types';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
@@ -13,7 +16,6 @@ import IconButton from 'material-ui/IconButton';
 
 
 import './style.css';
-
 import MenuItem from "material-ui/MenuItem";
 import IconMenu from "material-ui/IconMenu";
 
@@ -32,7 +34,7 @@ class App extends React.Component{
             },
             toolbar: {
                 backgroundColor: 'rgba(0, 0, 0, 0.84)',
-                backgroundImage: require('../images/page-header.png'),
+                backgroundImage: require('../../images/page-header.png'),
                 height: 84,
                 logo: {
                     marginLeft: 95
@@ -87,13 +89,13 @@ class App extends React.Component{
                     ):(<div></div>)}
                     <Toolbar style={this.styles.toolbar}>
                         <ToolbarGroup firstChild={true} style={this.styles.toolbar.logo}>
-                            <img src={require('../images/logo.png')} alt="Logo Comunicación Efectiva"/>
+                            <img src={require('../../images/logo.png')} alt="Logo Aulas Amigas"/>
                         </ToolbarGroup>
                         {isAuth ? (
                             <ToolbarGroup style={this.styles.toolbar.profile}>
                                 <SocialNotificationsNone
-                                    color={white}
-                                    style={this.styles.icons}
+                                color={white}
+                                style={this.styles.icons}
                                 />
                                 <div style={ {margin: '0 10px'} }>&nbsp;</div>
                                 <IconMenu
@@ -119,4 +121,17 @@ class App extends React.Component{
     }
 }
 
-export default App;
+// We need to check the auth in this Component for show or not the user panel
+App.PropTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
+    logout: PropTypes.func.isRequired
+};
+
+// With this function we map the global state of the app to the local state adding the property isAuthenticated
+function mapStateToProps(state) {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    }
+}
+//Connect this Component with the app provider who have the global state.
+export default connect(mapStateToProps, { logout })(App);
