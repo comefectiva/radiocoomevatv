@@ -159,6 +159,7 @@ class CreateVideo extends React.Component{
     onSubmit(event){
         event.preventDefault();
         let This = this;
+        console.log(this.state);
         if(This.isValid()){
             this.setState({ errors: {}, isLoading: true });
             console.log(this.state);
@@ -200,13 +201,14 @@ class CreateVideo extends React.Component{
                                     <img
                                         src={"http://localhost:8080/images/"+this.state.mediaImage.mediaName}
                                         style={ { width: 200 } }
+                                        alt={this.state.mediaImage.mediaName}
                                     />
                                 ):(<div></div>)}
                             </figure>
                         </div>
                         <div style={this.style.uploadBlock}>
                             <h3>Seleccionar imágen</h3>
-                            <input type="file" onChange={this.handleImageUpload.bind(this)}/><br/>
+                            <input type="file" onChange={this.handleVideoUpload.bind(this)}/><br/>
                             <figure>
                                 {this.state.videoLoading ? (
                                     <div>
@@ -215,7 +217,7 @@ class CreateVideo extends React.Component{
                                 ):(<div></div>)}
                                 <div>{this.state.mediaVideo.mediaMessage}</div>
                                 {this.state.mediaVideo.id !== 0 ? (
-                                    <video style={ { width: 200 } }>
+                                    <video style={ { width: 400 } } controls={true} autoPlay={true}>
                                         <source src={"http://localhost:8080/videos/"+this.state.mediaVideo.mediaName} type="video/mp4"/>
                                     </video>
                                 ):(<div></div>)}

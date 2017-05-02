@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getVideoByUrl} from '../actions/videoActions';
+import {getVideoByUrl} from '../../actions/videoActions';
 
-class Video extends React.Component{
+class VideoPage extends React.Component{
 
     constructor(props){
         super(props);
@@ -15,13 +15,13 @@ class Video extends React.Component{
     render(){
         return(
             <div>
-                Video
+                VideoPage
             </div>
         )
     }
 }
 
-Video.PropTypes = {
+VideoPage.PropTypes = {
     getVideoByUrl: PropTypes.func.isRequired
 };
-export default connect(null, {getVideoByUrl})(Video);
+export default connect(null, {getVideoByUrl})(VideoPage);

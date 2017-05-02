@@ -1,11 +1,10 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import {getVideos} from './actions/videoActions';
 
 //Page Components
 import App from './components/App';
 import Home from './components/Home';
-import Video from './components/Video';
+import Video from './components/video/VideoPage';
 //Admin Components
 import AdminApp from './components/admin/App';
 import LoginPage from './components/admin/login/LoginPage';
@@ -14,7 +13,6 @@ import AdminCreateVideo from './components/admin/video/CreateVideo';
 
 import requireAuth from './utils/requireAuth';
 
-const videoRoutes = getVideos();
 //Routes for this app (if any route must be protected wrap it with the function requireAuth(ReactComponent)
 export default (
     <Router history={browserHistory}>

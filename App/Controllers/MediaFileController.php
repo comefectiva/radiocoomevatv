@@ -31,7 +31,7 @@ class MediaFileController extends Controller{
                 self::$CurrentMediaPath = self::$ImagesFolder;
             }else if(fnmatch('video/*', $_FILES[$file]['type'])){
                 $acceptedFiles = array('video/mp4','video/ogg','video/webm');
-                $folder = self::$ImagesFolder;
+                $folder = self::$VideosFolder;
                 $maxStorage = '500M';
                 self::$CurrentMediaPath = self::$VideosFolder;
             }else{
