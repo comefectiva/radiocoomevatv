@@ -17,6 +17,7 @@ class CustomLogin extends Controller{
 
     public static function saveUserListFile($file){
         $acceptedFiles = array('text/plain','text/csv');
+
         $upload = self::uploadFile($file, '.csv', self::$DBFolder, $acceptedFiles, '10M');
         self::$DBFileName = $upload['name'];
         return $upload;

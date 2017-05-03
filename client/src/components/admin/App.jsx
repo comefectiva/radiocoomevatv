@@ -79,7 +79,7 @@ class App extends React.Component{
                                     onLeftIconButtonTouchTap={this.handleDrawerToggle.bind(this)}
                                 />
                                 <Subheader>Opciones de Video</Subheader>
-                                <MenuItem href="/admin/home">Lista de Videos</MenuItem>
+                                <MenuItem href="/admin/videos">Lista de Videos</MenuItem>
                                 <MenuItem href="/admin/video/new">Crear Video</MenuItem>
                                 <Subheader>Opciones de Bases de datos</Subheader>
                                 <MenuItem href="/admin/db">Lista de bases de datos</MenuItem>

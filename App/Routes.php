@@ -17,7 +17,7 @@ $route = new Route();
 //App Routes, if you want to create a new route please use relative paths (like /route/to/create)
 
 $route::get('/', function(){
-    //echo HomeController::CreateView('Index');
+    echo HomeController::CreateView('Index');
 }, array('requireAuth' => false));
 
 // API ROUTES
@@ -26,16 +26,16 @@ $route::post('/api/login', function(){
     $data = json_decode($data, true);
 
     header('Content-Type: application/json');
-    echo json_encode(UserController::login($data));
+    return json_encode(UserController::login($data));
 }, array('requireAuth' => false));
 
 //Get Users
 $route::get('/api/users', function(){
-    UserController::getAll();
+    return UserController::getAll();
 }, array('requireAuth' => true));
 //Create User
 $route::post('/api/users', function(){
-    UserController::getAll();
+    return UserController::getAll();
 }, array('requireAuth' => true));
 
 
@@ -48,33 +48,35 @@ $route::post('/api/users', function(){
  */
 $route::get('/api/videos', function(){
     if(isset($_GET['id'])){
-        echo VideoController::get($_GET['id']);
+        return VideoController::get($_GET['id']);
     }else{
-        echo VideoController::getAll();
+        return VideoController::getAll();
     }
 }, array('requireAuth' => false));
 $route::get('/api/videos/url', function(){
     if(isset($_GET['url'])){
-        echo VideoController::getByUrl($_GET['url']);
+        return VideoController::getByUrl($_GET['url']);
+    }else{
+        return json_encode(array('error'=>true, 'message'=>'Debes especificar una URL'));
     }
 }, array('requireAuth' => false));
 $route::post('/api/videos', function(){
     $data = file_get_contents("php://input");
     $data = json_decode($data, true);
     $video = VideoController::createVideo($data);
-    echo json_encode($video);
+    return json_encode($video);
 }, array('requireAuth' => false));
 $route::put('/api/videos', function(){
     $data = file_get_contents("php://input");
     $data = json_decode($data, true);
     $video = VideoController::updateVideo($data);
-    echo json_encode($video);
+    return json_encode($video);
 }, array('requireAuth' => false));
 $route::delete('/api/videos', function(){
     $data = file_get_contents("php://input");
     $data = json_decode($data, true);
     $video = VideoController::deleteVideo($data);
-    echo json_encode($video);
+    return json_encode($video);
 }, array('requireAuth' => false));
 
 /**
@@ -103,7 +105,7 @@ $route::post('/api/custom-login', function(){
     else:
         $result = array("error"=>true, 'message'=>'No se ha subido ningún archivo.');
     endif;
-    echo json_encode($result);
+    return json_encode($result);
 }, array('requireAuth' => false));
 
 /**
@@ -115,7 +117,7 @@ $route::post('/api/custom-login', function(){
  */
 $route::get('/api/media', function(){
     $media = MediaFileController::get($_GET['id']);
-    echo json_encode($media);
+    return json_encode($media);
 }, array('requireAuth' => false));
 $route::post('/api/media', function(){
     $MediaFile = new MediaFileController();
@@ -129,5 +131,7 @@ $route::post('/api/media', function(){
     else:
         $result = array("error"=>true, 'message'=>'No se ha subido ningún archivo.');
     endif;
-    echo json_encode($result);
+    return json_encode($result);
 }, array('requireAuth' => false));
+
+$route::render();

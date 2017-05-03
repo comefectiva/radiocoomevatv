@@ -27,6 +27,6 @@ class UserController extends Controller{
     public static function getAll(){
         $users = self::query("SELECT id,name,mail,isAdmin,created_at FROM users");
         header('Content-type: application/json');
-        echo json_encode($users);
+        return json_encode($users);
     }
 }

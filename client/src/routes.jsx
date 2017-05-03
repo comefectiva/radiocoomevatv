@@ -10,6 +10,7 @@ import AdminApp from './components/admin/App';
 import LoginPage from './components/admin/login/LoginPage';
 import AdminHome from './components/admin/video/VideoList';
 import AdminCreateVideo from './components/admin/video/CreateVideo';
+import EditVideo from './components/admin/video/EditVideo';
 
 import requireAuth from './utils/requireAuth';
 
@@ -18,12 +19,12 @@ export default (
     <Router history={browserHistory}>
         <Route path="/admin" component={AdminApp}>
             <IndexRoute component={LoginPage} />
-            <Route path="home" component={requireAuth(AdminHome)} />
+            <Route path="videos" component={requireAuth(AdminHome)} />
             <Route path="video/new" component={requireAuth(AdminCreateVideo)} />
+            <Route path="video/update/:id" component={requireAuth(EditVideo)}/>
         </Route>
         <Route path="/" components={App}>
             <IndexRoute component={Home} />
-            <Route path="*" component={Video} />
         </Route>
     </Router>
 )

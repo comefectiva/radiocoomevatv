@@ -66,7 +66,7 @@ class LoginForm extends React.Component{
                 isLoading: true
             });
             this.props.login(this.state).then(
-                (res) => this.context.router.push('/admin/video'),
+                (res) => this.context.router.push('/admin/videos'),
                 (err) => this.setState({ errorLogin: true, isLoading: false })
             );
         }

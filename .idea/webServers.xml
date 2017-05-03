@@ -3,9 +3,9 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="a0ca060a-06b4-4a14-a795-d90146d4ec76" name="DeployRadioCoomevaTV" url="http://52.203.180.8">
-        <fileTransfer host="52.203.180.8" port="21" rootFolder="/php-projects">
+        <fileTransfer host="52.203.180.8" port="21" rootFolder="/radiocoomevatv">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" />
+            <advancedOptions dataProtectionLevel="Private" forceListCommand="true" passiveMode="true" />
           </advancedOptions>
           <option name="port" value="21" />
         </fileTransfer>

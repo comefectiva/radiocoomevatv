@@ -8,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import Toggle from 'material-ui/Toggle';
 
 import { uploadDocumentRequest } from '../../../actions/mediaActions';
+import { createVideo } from '../../../actions/videoActions';
 
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
@@ -18,9 +19,6 @@ function validateInputEvent(data){
     if(Validator.isEmpty(data.title)){
         errors.title = 'Este campo es obligatorio'
     }
-    if(Validator.isEmpty(data.content)){
-        errors.content = 'Este campo es obligatorio'
-    }
 
     if(Validator.isEmpty(data.sector)){
         errors.sector = 'Este campo es obligatorio'
@@ -28,7 +26,9 @@ function validateInputEvent(data){
     if(data.media === 0){
         errors.media = 'Debes subir una imágen'
     }
-
+    if(Validator.isEmpty(data.url)){
+        errors.url = 'Este campo es obligatorio'
+    }
     return {
         errors,
         isValid: isEmpty(errors)
@@ -41,7 +41,7 @@ class CreateVideo extends React.Component{
         super(props);
         this.state = {
             title: '',
-            content: '',
+            url: '',
             mediaImage: {
                 id: 0,
                 mediaName: '',
@@ -55,9 +55,10 @@ class CreateVideo extends React.Component{
             },
             videoLoading: false,
             sector: '',
-            requireLogin: true,
+            requireLogin: false,
             active: true,
             errors: {},
+            globalErrors: '',
             isLoading: false
         };
         this.style = {
@@ -159,16 +160,34 @@ class CreateVideo extends React.Component{
     onSubmit(event){
         event.preventDefault();
         let This = this;
-        console.log(this.state);
         if(This.isValid()){
             this.setState({ errors: {}, isLoading: true });
-            console.log(this.state);
-            /*this.props.createArticle(this.state).then(
-                () => {
-                    This.context.router.push('/admin/home');
-                },
-                (err) => this.setState({ errors: err.response, isLoading: false })
-            );*/
+            let params = {
+                name: this.state.title,
+                image: this.state.mediaImage.id,
+                video: this.state.mediaVideo.id,
+                url: this.state.url,
+                sector: this.state.sector,
+                requireLogin: this.state.requireLogin
+            };
+            this.props.createVideo(params).then( (result) => {
+                    console.log(result);
+                    if(result.data.error === true){
+                        if(result.data.code === '23000'){
+                            let errors = {};
+                            errors.url = 'Esta URL ya existe';
+                            This.setState({ errors, isLoading: false })
+                        }else{
+                            This.setState({
+                                globalErrors: result.data.message,
+                                isLoading: false
+                            })
+                        }
+                    }else{
+                        This.context.router.push('/admin/videos');
+                    }
+                }
+            );
         }
     }
 
@@ -178,12 +197,21 @@ class CreateVideo extends React.Component{
             <div>
                 <div className="page">
                     <h2>Agregar Video</h2>
+                    <h3>{this.state.globalErrors}</h3>
                     <form onSubmit={this.onSubmit.bind(this)}>
                         <TextField
                             name="title"
                             floatingLabelText="Título del Video *"
                             value={this.state.title}
                             errorText={errors.title}
+                            style={this.style.text100with}
+                            onChange={this.onChange.bind(this)}
+                        />
+                        <TextField
+                            name="url"
+                            floatingLabelText="URL del Video *"
+                            value={this.state.url}
+                            errorText={errors.url}
                             style={this.style.text100with}
                             onChange={this.onChange.bind(this)}
                         />
@@ -235,15 +263,9 @@ class CreateVideo extends React.Component{
                             <MenuItem value="turismo" primaryText="TURISMO" />
                         </SelectField>
                         <Toggle
-                            label="¿Video activo?"
-                            labelPosition="right"
-                            defaultToggled={this.state.active}
-                            onToggle={this.onToggleActive.bind(this)}
-                        />
-                        <Toggle
                             label="¿Requiere Login?"
                             labelPosition="right"
-                            defaultToggled={this.state.active}
+                            defaultToggled={this.state.requireLogin}
                             onToggle={this.onToggleActive.bind(this)}
                         /><br/>
                         <RaisedButton
@@ -259,12 +281,12 @@ class CreateVideo extends React.Component{
 }
 
 CreateVideo.PropTypes = {
-    uploadDocumentRequest: PropTypes.func.isRequired
-    //createArticle: React.PropTypes.func.isRequired
+    uploadDocumentRequest: PropTypes.func.isRequired,
+    createVideo: PropTypes.func.isRequired
 };
 
 CreateVideo.contextTypes = {
     router: PropTypes.object.isRequired
 };
 
-export default connect(null, { uploadDocumentRequest })(CreateVideo);
+export default connect(null, { uploadDocumentRequest, createVideo })(CreateVideo);

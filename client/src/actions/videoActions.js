@@ -19,3 +19,15 @@ export function getVideoByUrl(url){
         });
     }
 }
+
+export function createVideo(params){
+    return () => {
+        return axios.post('/api/videos', params);
+    }
+}
+
+export function editVideo(params){
+    return () => {
+        return axios.put('/api/videos', params);
+    }
+}

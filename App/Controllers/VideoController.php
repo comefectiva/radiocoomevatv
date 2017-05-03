@@ -32,7 +32,7 @@ class VideoController extends Controller{
                                         VALUES (:name, :image, :video, :url, :sector, :requireLogin)", $params);
             return array("error"=> false, "video"=>$video);
         }catch (Exception $e){
-            return array('error' => true, 'message'=>$e->getMessage());
+            return array('error' => true, 'message'=>$e->getMessage(), 'code'=>$e->getCode());
         }
     }
 

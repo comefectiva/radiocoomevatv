@@ -22,3 +22,11 @@ export function uploadDocumentRequest(file) {
         return axios.post('/api/media', data)
     };
 }
+
+export function getMedia(id){
+    return () => {
+        return axios.get('/api/media', {
+            params: {id}
+        })
+    }
+}

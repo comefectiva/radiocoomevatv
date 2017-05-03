@@ -3,6 +3,12 @@ namespace App\Core\Route;
 use App\Middlewares\Auth\Auth;
 
 /**
+ * We need to import the VideoController to Invoke the Index view method
+ */
+
+use App\Controllers\HomeController\HomeController;
+
+/**
  * Class Route
  * @package App\Core\Route
  */
@@ -14,6 +20,21 @@ class Route{
     public static $validGETRoutes = array();
     public static $validPOSTRoutes = array();
     public static $validPUTRoutes = array();
+    public static $response = NULL;
+
+
+    /**
+     * Render the App and display the response
+     * If there are not a response then display the frontEnd for the route handling
+     */
+    public static function render(){
+        if(self::$response === NULL){
+            echo HomeController::CreateView('Index');
+        }else{
+            echo self::$response;
+        }
+        die();
+    }
 
     /**
      * function for GET methods
@@ -27,14 +48,13 @@ class Route{
         $match = explode('?', $_SERVER['REQUEST_URI']);
         if($match[0] == $route && $_SERVER['REQUEST_METHOD'] === 'GET'){
             if($requireAuth['requireAuth'] === false){
-                $function->__invoke();
+                self::$response = $function->__invoke();
             }else{
                 if(Auth::Check($_SERVER['Authorization'])){
-                    $function->__invoke();
+                    self::$response = $function->__invoke();
                 }else{
                     http_response_code(401);
                 }
-                // when require authentication
             }
         }
     }
@@ -49,7 +69,7 @@ class Route{
         self::$validPOSTRoutes[] = $route;
         if($_SERVER['REQUEST_URI'] == $route && $_SERVER['REQUEST_METHOD'] === 'POST'){
             if($requireAuth['requireAuth'] === false){
-                $function->__invoke();
+                self::$response = $function->__invoke();
             }else{
                 // When require authentication
             }
@@ -66,10 +86,10 @@ class Route{
         self::$validPUTRoutes[] = $route;
         if($_SERVER['REQUEST_URI'] == $route && $_SERVER['REQUEST_METHOD'] === 'PUT'){
             if($requireAuth['requireAuth'] === false){
-                $function->__invoke();
+                self::$response = $function->__invoke();
             }else{
                 if(Auth::Check($_SERVER['Authorization'])){
-                    $function->__invoke();
+                    self::$response = $function->__invoke();
                 }else{
                     http_response_code(401);
                 }
@@ -88,10 +108,10 @@ class Route{
         self::$validPUTRoutes[] = $route;
         if($_SERVER['REQUEST_URI'] == $route && $_SERVER['REQUEST_METHOD'] === 'DELETE'){
             if($requireAuth['requireAuth'] === false){
-                $function->__invoke();
+                self::$response = $function->__invoke();
             }else{
                 if(Auth::Check($_SERVER['Authorization'])){
-                    $function->__invoke();
+                    self::$response = $function->__invoke();
                 }else{
                     http_response_code(401);
                 }

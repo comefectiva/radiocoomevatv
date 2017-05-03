@@ -103,8 +103,8 @@ class Home extends React.Component{
                                         <TableRowColumn>{video.sector}</TableRowColumn>
                                         <TableRowColumn>{video.created_at}</TableRowColumn>
                                         <TableRowColumn>
-                                            <RaisedButton label="Editar" backgroundColor={orange500}/>
-                                            <RaisedButton label="Borrar" backgroundColor={red500}/>
+                                            <RaisedButton label="Editar" href={"/admin/video/update/"+video.id} backgroundColor={orange500}/>
+                                            <RaisedButton label="Borrar" href={"/admin/video/delete/"+video.id} backgroundColor={red500}/>
                                         </TableRowColumn>
                                     </TableRow>
                                 )

@@ -17,7 +17,7 @@ export default function(ComposedComponent){
                     type: 'error',
                     text: 'Debes loguearte para acceder a esta sección'
                 });
-                this.context.router.push('/login');
+                this.context.router.push('/admin');
             }
         }
         // When the user use the logout() dispatch this update

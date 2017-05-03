@@ -18,7 +18,7 @@ class MediaFileController extends Controller{
     }
 
     public static function get($id){
-        $media = self::query("SELECT id,name,type,created_at FROM media WHERE id=$id");
+        $media = self::getOne("SELECT id,name,type,created_at FROM media WHERE id=$id");
         return $media;
     }
 
@@ -40,7 +40,7 @@ class MediaFileController extends Controller{
             $path = $_FILES[$file]['name'];
             $ext = pathinfo($path, PATHINFO_EXTENSION);
             $upload = self::uploadFile($file, $ext, $folder, $acceptedFiles, $maxStorage);
-            self::$CurrentMediaName = $upload['name'].'.'.$ext;
+            self::$CurrentMediaName = $upload['name'];
             return $upload;
         }catch (Exception $e){
             return array("error"=>true, "message"=>$e->getMessage());
@@ -50,7 +50,7 @@ class MediaFileController extends Controller{
     public static function createMediaFile(){
         try{
             $fileInfo = finfo_open(FILEINFO_MIME_TYPE); // devuelve el tipo mime de su extensión
-            $type = finfo_file($fileInfo, self::$CurrentMediaPath.'.'.self::$CurrentMediaName);
+            $type = finfo_file($fileInfo, self::$CurrentMediaPath.self::$CurrentMediaName);
             finfo_close($fileInfo);
             $params = array('name'=>self::$CurrentMediaName, 'type'=>$type);
             $media = self::save("INSERT INTO media(name,type) VALUES (:name, :type)", $params);
