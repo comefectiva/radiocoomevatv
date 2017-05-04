@@ -1,6 +1,5 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import './style.css';
 
 //This will be our Main Component
 class App extends React.Component{
@@ -68,8 +67,9 @@ class App extends React.Component{
                             </nav>
                         </div>
                     </header>
-
-                    {this.props.children}
+                    <div className="main">
+                        {this.props.children}
+                    </div>
 
                     <footer className="row">
                         <div className="container-fluid">
