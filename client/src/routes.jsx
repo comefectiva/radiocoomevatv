@@ -3,8 +3,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 //Page Components
 import App from './components/App';
-import Home from './components/Home';
 import Video from './components/video/VideoPage';
+import Home from './components/home/Home';
 //Admin Components
 import AdminApp from './components/admin/App';
 import LoginPage from './components/admin/login/LoginPage';
@@ -13,6 +13,7 @@ import AdminCreateVideo from './components/admin/video/CreateVideo';
 import EditVideo from './components/admin/video/EditVideo';
 
 import requireAuth from './utils/requireAuth';
+import Player from "./components/player/Player";
 
 //Routes for this app (if any route must be protected wrap it with the function requireAuth(ReactComponent)
 export default (
@@ -25,6 +26,7 @@ export default (
         </Route>
         <Route path="/" components={App}>
             <IndexRoute component={Home} />
+            <Route path="player" components={Player}/>
         </Route>
     </Router>
 )
