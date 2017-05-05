@@ -23,7 +23,9 @@ class VideoController extends Controller{
 
     public static function getByUrl($url){
         $video = self::getOne("SELECT id,name,image,video,url,sector,requireLogin,created_at FROM videos WHERE url='$url'");
-        return json_encode($video);
+        $image = self::getOne("SELECT * FROM media WHERE id=".$video['image']);
+        $video = self::getOne("SELECT * FROM media WHERE id=".$video['video']);
+        return json_encode(array('info'=> $video, 'image'=>$image, 'video'=>$video) );
     }
 
     public static function createVideo(Array $params){
@@ -50,6 +52,7 @@ class VideoController extends Controller{
     public static function deleteVideo(Array $params){
         try{
             $video = self::update("DELETE FROM `videos` WHERE `id`=:id", $params);
+
             return array("error"=> false, "video"=>$video);
         }catch (Exception $e){
             return array('error' => true, 'message'=>$e->getMessage());

@@ -8,7 +8,7 @@ class Top10Controller extends Controller{
 
     public static function getAll($radio){
         try{
-            $data = self::OldQuery("SELECT * FROM mp3s WHERE lista='$radio' AND estado='1'");
+            $data = self::OldQuery("SELECT * FROM mp3s WHERE lista='$radio' AND estado='1' order by(posicion)");
             return $data;
         }catch (Exception $e){
             return array('error'=>true, 'message'=>$e->getMessage(), 'code'=>$e->getCode());

@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getSource, getRadioList, getSourceInfo, playerGlobalHandler } from '../../actions/playerActions';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../style.css';
+import {getTop10} from '../../actions/top10Actions';
 class Player extends React.Component{
 
     constructor(props){
@@ -16,7 +15,8 @@ class Player extends React.Component{
                 source: '',
                 name: '',
                 infoPath: '',
-                coverPath: ''
+                coverPath: '',
+                internalID: ''
             },
             listActive: 'inactive',
             isPlaying: true,
@@ -32,7 +32,8 @@ class Player extends React.Component{
                 album: '',
                 cover: ''
             },
-            historySongs: []
+            historySongs: [],
+            listTop10: []
         };
         //Get Radios for this page
         This.props.getRadioList().then(result => {
@@ -45,9 +46,17 @@ class Player extends React.Component{
                         currentRadio: {
                             source: currentRadio.source,
                             name: currentRadio.name,
-                            infoPath: currentRadio.infoFile,
-                            coverPath: currentRadio.coverPath
+                            infoPath: currentRadio.infoPath,
+                            coverPath: currentRadio.coverPath,
+                            internalID: currentRadio.internalID
                         }
+                    });
+                    //Initiate Top10
+                    This.props.getTop10(this.state.currentRadio.internalID).then(result => {
+                        console.log(result);
+                        This.setState({
+                            listTop10: result.data
+                        });
                     });
                     This.getSourceInfo();
                     break;
@@ -63,8 +72,15 @@ class Player extends React.Component{
     getSource(param){
         let This = this;
         this.props.getSource(param).then( result => {
+            let currentRadio = result.data;
             This.setState({
-                currentRadioName: result.data.name
+                currentRadio: {
+                    source: currentRadio.source,
+                    name: currentRadio.name,
+                    infoPath: currentRadio.infoPath,
+                    coverPath: currentRadio.coverPath,
+                    internalID: currentRadio.internalID
+                }
             });
             this.props.playerGlobalHandler(true);
         });
@@ -223,18 +239,24 @@ class Player extends React.Component{
                     </div>
                     <h3>TOP 10</h3>
                     <div className="list-group">
-                        <a className="list-group-item row" onClick={() => {console.log('getTop10Item')}}>
-                            <figure className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <img src="{{item.cover}}" alt="" />
-                            </figure>
-                            <div className="song-information col-xs-8 col-sm-8 col-md-8 col-lg-8 row">
-                                <strong className="artist-top-10 col-xs-12 col-sm-12 col-md-12 col-lg-12">artist</strong>
-                                <span className="song-top-10 col-xs-12 col-sm-12 col-md-12 col-lg-12">song</span>
-                            </div>
-                            <div className="play-top-10 col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <i className="glyphicon glyphicon-play"></i>
-                            </div>
-                        </a>
+                        {
+                            this.state.listTop10.map(song => {
+                                return (
+                                    <a className="list-group-item row" onClick={() => {console.log('getTop10Item')}} key={song.id}>
+                                        <figure className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <img src={song.imagen.replace('../../', 'http://radio.coomeva.com.co/')} alt="" />
+                                        </figure>
+                                        <div className="song-information col-xs-8 col-sm-8 col-md-8 col-lg-8 row">
+                                            <strong className="artist-top-10 col-xs-12 col-sm-12 col-md-12 col-lg-12">{song.artista}</strong>
+                                            <span className="song-top-10 col-xs-12 col-sm-12 col-md-12 col-lg-12">{song.titulo}</span>
+                                        </div>
+                                        <div className="play-top-10 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                            <i className="glyphicon glyphicon-play"></i>
+                                        </div>
+                                    </a>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </aside>
@@ -247,7 +269,8 @@ Player.PropTypes = {
     getRadioList: PropTypes.func.isRequired,
     getSourceInfo: PropTypes.func.isRequired,
     playerGlobalHandler: PropTypes.func.isRequired,
-    isPlaying: PropTypes.bool.isRequired
+    isPlaying: PropTypes.bool.isRequired,
+    getTop10: PropTypes.func.isRequired
 };
 
-export default connect(null, { getSource, getRadioList, getSourceInfo, playerGlobalHandler })(Player);
+export default connect(null, { getSource, getRadioList, getSourceInfo, playerGlobalHandler, getTop10 })(Player);

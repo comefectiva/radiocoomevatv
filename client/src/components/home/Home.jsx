@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Player from '../player/Player';
 import {Carousel} from "react-bootstrap";
 
@@ -6,10 +7,11 @@ class Home extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = {
+        let This = this;
+        This.state = {
             podcastProgress: 0,
             radioPlaying: true
-        }
+        };
     }
 
     render(){
@@ -148,4 +150,4 @@ class Home extends React.Component{
     }
 }
 
-export default Home;
+export default connect(null, {})(Home);

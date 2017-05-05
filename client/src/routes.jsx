@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 //Page Components
 import App from './components/App';
 import Home from './components/home/Home';
+import Video from './components/video/Video';
 //Admin Components
 import AdminApp from './components/admin/App';
 import LoginPage from './components/admin/login/LoginPage';
@@ -27,5 +28,7 @@ export default (
             <IndexRoute component={Home} />
             <Route path="player" components={Player}/>
         </Route>
+
+        <Route path="/video/*" components={Video}/>
     </Router>
 )

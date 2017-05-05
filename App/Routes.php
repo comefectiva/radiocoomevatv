@@ -170,7 +170,7 @@ $route::get('/api/podcasts', function(){
 
 $route::get('/api/top10', function(){
     if(isset($_GET['id'])){
-        return json_encode(PodcastController::getOne($_GET['id']));
+        return json_encode(Top10Controller::getOne($_GET['id']));
     }else{
         return json_encode(Top10Controller::getAll($_GET['radio']));
     }

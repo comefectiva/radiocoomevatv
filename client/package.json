@@ -8,6 +8,7 @@
     "dateformat": "^2.0.0",
     "jshashes": "^1.0.6",
     "jwt-decode": "^2.1.0",
+    "lodash": "^4.17.4",
     "material-ui": "^0.16.4",
     "material-ui-upload": "^1.0.0",
     "prop-types": "^15.5.8",

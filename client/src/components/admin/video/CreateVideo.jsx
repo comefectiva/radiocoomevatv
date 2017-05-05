@@ -95,6 +95,7 @@ class CreateVideo extends React.Component{
             imageLoading: true
         });
         this.props.uploadDocumentRequest(event.target.files[0]).then(result => {
+            console.log(result);
             if(!result.data.error){
                 this.setState({
                     mediaImage: {
