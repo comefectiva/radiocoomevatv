@@ -9,27 +9,6 @@ class App extends React.Component{
         this.state = {
             drawerOpen: false
         };
-        this.styles = {
-            appBar: {
-                backgroundColor: 'rgba(0, 0, 0, 0.84)',
-                height: 50
-            },
-            toolbar: {
-                backgroundColor: 'rgba(0, 0, 0, 0.84)',
-                backgroundImage: require('../images/page-header.png'),
-                height: 84,
-                logo: {
-                    marginLeft: 95
-                },
-                profile: {
-                    marginRight: 120
-                }
-            },
-            icons: {
-                width: 30,
-                height: 30
-            }
-        }
     }
 
     logout(){
@@ -67,8 +46,10 @@ class App extends React.Component{
                             </nav>
                         </div>
                     </header>
-                    <div className="main">
-                        {this.props.children}
+                    <div className="container-fluid">
+                        <div className="main">
+                            {this.props.children}
+                        </div>
                     </div>
 
                     <footer className="row">

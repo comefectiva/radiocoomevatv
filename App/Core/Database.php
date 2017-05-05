@@ -13,7 +13,7 @@ class Database {
     private static $host = "127.0.0.1";
     private static $dbName = "radiocoomevatv";
     private static $user = "root";
-    private static $pass = "";
+    private static $pass = "Gaton123";
 
     //RadioCoomeva OLD
     private static $dbOld = 'radiocoomeva-old';
@@ -66,8 +66,8 @@ class Database {
      * @param array $params = PARAMS for PDO
      * @return array with one result
      */
-    public static function OldGetOne($query, $params = array()) {
-        $stmt = self::Oldcon()->prepare($query);
+    public static function getOne($query, $params = array()) {
+        $stmt = self::con()->prepare($query);
         $stmt->execute($params);
         $data = $stmt->fetch();
         return $data;
@@ -92,7 +92,7 @@ class Database {
      * @param array $params = PARAMS for PDO
      * @return array with one result
      */
-    public static function OldOne($query, $params = array()) {
+    public static function OldGetOne($query, $params = array()) {
         $stmt = self::Oldcon()->prepare($query);
         $stmt->execute($params);
         $data = $stmt->fetch();

@@ -1,8 +1,35 @@
 import axios from 'axios';
+import { RADIO_PLAYING_STATUS } from './types';
 
+export function setRadioPlayerStatus(status){
+    return {
+        type: RADIO_PLAYING_STATUS,
+        user: status
+    }
+}
 
-export function getSource(params){
+export function playerGlobalHandler(status){
+    return dispatch => {
+        dispatch(setRadioPlayerStatus(status));
+    }
+}
+
+export function getRadioList(){
     return () => {
-        return axios.get(`http://108.163.147.73/radio-new/public/api/v1.0/${params}/get-source`);
+        return axios.get('/api/radios');
+    }
+}
+
+export function getSource(id){
+    return () => {
+        return axios.get('/api/radios', {
+            params: {id}
+        });
+    }
+}
+
+export function getSourceInfo(params){
+    return () =>{
+        return axios.post('/api/radios/info', params);
     }
 }

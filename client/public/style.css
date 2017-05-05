@@ -8,7 +8,7 @@ body,html{
     min-width: 1330px;
 }
 body{
-    background: url('./images/bodyback.jpg') repeat;
+    background: url('./images/bodyback.jpg') repeat !important;
     max-width: 1920px;
     min-width: 1330px;
 }

@@ -7,7 +7,8 @@ class Home extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            podcastProgress: 0
+            podcastProgress: 0,
+            radioPlaying: true
         }
     }
 
@@ -15,22 +16,14 @@ class Home extends React.Component{
         let openInteres = false;
         return(
             <div className="row template-container">
-                <Player/>
+                <Player ref={(player) => {this._player = player}}/>
                 <section className="row section-home-flex">
                     <Carousel id="home-slider">
                         <Carousel.Item>
                             <img alt="900x500" src={require('../images/ella.png')}/>
-                            <Carousel.Caption>
-                                <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
                             <img alt="900x500" src={require('../images/main-banner.jpg')}/>
-                            <Carousel.Caption>
-                                <h3>Second slide label</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>
                     <div className="row">
@@ -39,7 +32,7 @@ class Home extends React.Component{
                             <div className="home-podcast">
                                 <uib-carousel id="slider-home-podcasts" active="0" no-wrap="false">
                                     <uib-slide index="0">
-                                        <figure className="row compact-player" onClick ={ () => console.log("playHomePodcast(0)") }>/*Onclick*/
+                                        <figure className="row compact-player">/*Onclick*/
                                             <figure className="playButton">
                                                 <i className="soundsPodcastsHome.soundPodcast_0=='stop' ? 'glyphicon glyphicon-play' : 'glyphicon glyphicon-pause'"></i>
                                             </figure>

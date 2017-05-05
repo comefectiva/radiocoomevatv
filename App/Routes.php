@@ -5,6 +5,8 @@ namespace App\Routes;
 error_reporting(E_ALL);
 
 use App\Controller\PodcastController\PodcastController;
+use App\Controller\RadioController\RadioController;
+use App\Controller\Top10\Top10Controller;
 use App\Controllers\CustomLogin\CustomLogin;
 use App\Controllers\HomeController\HomeController;
 use App\Controllers\MediaController\MediaFileController;
@@ -135,6 +137,27 @@ $route::post('/api/media', function(){
     return json_encode($result);
 }, array('requireAuth' => false));
 
+/**
+ * API FOR Radios
+ * THIS API ALLOW METHODS GET
+ * The GET method must specify which king os result need
+ * if u need a single row need to send the param `id`
+ * if u need the entire list of videos just do the raw request
+ */
+$route::get('/api/radios', function(){
+    if(isset($_GET['id'])){
+        return json_encode(RadioController::get($_GET['id']));
+    }else{
+        return json_encode(RadioController::getAll());
+    }
+}, array('requireAuth' => false));
+$route::post('/api/radios/info', function(){
+    $data = file_get_contents("php://input");
+    $data = json_decode($data, true);
+    $data = RadioController::getSourceInfo($data['infoPath'], $data['coverPath']);
+    return json_encode($data);
+}, array('requireAuth' => false));
+
 
 //OLD RADIOCOOMEVA
 $route::get('/api/podcasts', function(){
@@ -142,6 +165,14 @@ $route::get('/api/podcasts', function(){
         return json_encode(PodcastController::getOne($_GET['id']));
     }else{
         return json_encode(PodcastController::getAll());
+    }
+}, array('requireAuth'=>false));
+
+$route::get('/api/top10', function(){
+    if(isset($_GET['id'])){
+        return json_encode(PodcastController::getOne($_GET['id']));
+    }else{
+        return json_encode(Top10Controller::getAll($_GET['radio']));
     }
 }, array('requireAuth'=>false));
 

@@ -3,7 +3,6 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 //Page Components
 import App from './components/App';
-import Video from './components/video/VideoPage';
 import Home from './components/home/Home';
 //Admin Components
 import AdminApp from './components/admin/App';
