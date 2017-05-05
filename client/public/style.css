@@ -1,11 +1,9 @@
-/* Style Radio Coomeva Old */
-
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
 
 body,html{
     margin: 0 auto;
     padding: 0;
-    font-family: 'Roboto', sans-serif ;
+    font-family: 'Roboto', sans-serif !important;
     max-width: 1920px;
     min-width: 1330px;
 }
@@ -21,8 +19,8 @@ body .container-fluid{
     margin: 0 auto;
 }
 .row{
-    margin-right: 0px ;
-    margin-left: 0px ;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
 }
 header{
     margin: 0;
@@ -75,8 +73,8 @@ nav a:hover{
     text-decoration: none;
 }
 nav a:active, nav a:visited{
-    text-decoration: none ;
-    color: white ;
+    text-decoration: none !important;
+    color: white !important;
 }
 nav a:hover, nav a.active{
     text-decoration: none;
@@ -94,9 +92,9 @@ nav a:hover, nav a.active{
 }
 .publicidad-aside{
     position: absolute;
-    padding-top: 100px ;
+    padding-top: 100px !important;
     height: 100%;
-    background: none ;
+    background: none !important;
 }
 .publicidad-aside img{
     padding: 0px 3%;
@@ -114,17 +112,17 @@ nav a:hover, nav a.active{
 
 }
 .panel-group{
-    margin-bottom: 0px ;
+    margin-bottom: 0px !important;
 }
 .radio-list .panel{
     background: none;
     border: none;
 }
 .radio-list .panel-heading{
-    background: none ;
+    background: none !important;
     border: none;
     position: relative;
-    padding: 15px ;
+    padding: 15px !important;
     z-index: 9999;
 }
 .radio-list .panel-heading h4{
@@ -163,7 +161,7 @@ nav a:hover, nav a.active{
 }
 .background-image{
     position: absolute;
-    background-position: center ;
+    background-position: center !important;
     display: block;
     width: 100%;
     height: 100%;
@@ -193,7 +191,7 @@ nav a:hover, nav a.active{
     height: 270px;
 }
 .player .cover img{
-    width: 100% ;
+    width: 100% !important;
     max-width: 330px;
     max-height: 330px;
     padding: 10px;
@@ -219,7 +217,7 @@ nav a:hover, nav a.active{
     height: 34px;
 }
 .player .panel-body{
-    padding: 0px ;
+    padding: 0px !important;
 }
 .player .cover span{
     display: block;
@@ -273,7 +271,7 @@ nav a:hover, nav a.active{
     text-decoration: none;
 }
 .panel-title a[aria-expanded="false"] .background-image{
-    background: none ;
+    background: none !important;
 }
 .panel-title a span{
     margin-bottom: -25px;
@@ -303,7 +301,7 @@ nav a:hover, nav a.active{
 aside{
     max-width: 250px;
     height: 1370px;
-    padding: 0px ;
+    padding: 0px !important;
     float: left;
     flex: 1;
     -webkit-flex: 1; /* Safari 6.1+ */
@@ -341,7 +339,7 @@ aside figure img{
 }
 
 section{
-    padding: 0px ;
+    padding: 0px !important;
     margin: 0px;
 }
 section.section-home-flex{
@@ -368,7 +366,7 @@ section.section-home-flex{
     font-weight: normal;
 }
 .podcast-home-section h2 strong{
-    width: 30% ;
+    width: 30% !important;
 }
 .podcast-home-section hr{
     border-bottom: 1px solid gray;
@@ -385,8 +383,8 @@ section.section-home-flex{
     width: 75%;
 }
 #slider-home-podcasts .carousel-inner .item .carousel-caption{
-    position: static ;
-    text-align: left ;
+    position: static !important;
+    text-align: left !important;
     height:375px;
 }
 #slider-home-podcasts .right.carousel-control,
@@ -419,8 +417,8 @@ section.section-home-flex{
     padding: 0px;
     color: white;
     padding-bottom: 25px;
-    padding-left: 2.5% ;
-    padding-right: 2.5% ;
+    padding-left: 2.5% !important;
+    padding-right: 2.5% !important;
     height: 870px;
 }
 .home-podcast{
@@ -479,38 +477,38 @@ section.section-home-flex{
 .miniplayer .podcast-home-controls .play-pause-podcast-home{
     position: relative;
     top: -8px;
-    color: #A4FF9F ;
+    color: #A4FF9F !important;
     cursor: pointer;
 }
 .title{
     color: #D0D0D0;
-    font-weight: bold ;
-    padding-bottom: 10px ;
-    font-weight: bold ;
-    text-shadow: none ;
+    font-weight: bold !important;
+    padding-bottom: 10px !important;
+    font-weight: bold !important;
+    text-shadow: none !important;
 }
 .item-title{
     color: #D0D0D0;
-    font-weight: bold ;
-    border-bottom: 1px solid gray ;
-    padding-bottom: 10px ;
-    font-size: 29px ;
-    font-weight: bold ;
-    text-shadow: none ;
+    font-weight: bold !important;
+    border-bottom: 1px solid gray !important;
+    padding-bottom: 10px !important;
+    font-size: 29px !important;
+    font-weight: bold !important;
+    text-shadow: none !important;
 }
 .title-more{
     color: #A8A8A8;
 }
 .item-subtitle{
-    display: block ;
-    float: none ;
-    width: 100% ;
-    font-size: 17px ;
-    margin-top: 5px ;
-    color: #939292 ;
-    font-style: italic ;
-    font-weight: lighter ;
-    text-shadow: none ;
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    font-size: 17px !important;
+    margin-top: 5px !important;
+    color: #939292 !important;
+    font-style: italic !important;
+    font-weight: lighter !important;
+    text-shadow: none !important;
 }
 .title-darker{
     color:#8c8c8c;
@@ -725,17 +723,17 @@ footer .footer-icon{
 }
 aside.Adulto_Contemporaneo .top-10{
     border: 1px solid #494848;
-    border-bottom: 1px solid #333; ;
+    border-bottom: 1px solid #333; !important;
 }
 aside.Instrumental .top-10{
-    border-bottom: 1px solid rgb(16, 91, 105); ;
+    border-bottom: 1px solid rgb(16, 91, 105); !important;
 }
 aside.Jovenes .top-10{
-    border-bottom: 1px solid rgb(185, 149, 15); ;
+    border-bottom: 1px solid rgb(185, 149, 15); !important;
 }
 .top-10 .list-group{
-    padding-bottom: 0px ;
-    margin-bottom: 0px ;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
 }
 .top-10 h3{
     color: #D0D0D0;
@@ -774,27 +772,27 @@ aside.Jovenes .top-10{
     width: 100%;
 }
 .top-10 .list-group .list-group-item{
-    padding: 0px ;
-    border-bottom: none ;
-    background: transparent ;
-    border-left: none ;
-    border-right: none ;
-    color: #939292 ;
+    padding: 0px !important;
+    border-bottom: none !important;
+    background: transparent !important;
+    border-left: none !important;
+    border-right: none !important;
+    color: #939292 !important;
     z-index: 9;
-    cursor: pointer ;
+    cursor: pointer !important;
     font-weight: lighter;
 }
 aside.Adulto_Contemporaneo .top-10 .list-group .list-group-item{
-    border-top: 1px solid #232323 ;
-    color: #939292 ;
+    border-top: 1px solid #232323 !important;
+    color: #939292 !important;
 }
 aside.Instrumental .top-10 .list-group .list-group-item{
-    border-top: 1px solid rgb(16, 91, 105) ;
-    color: rgb(16, 91, 105) ;
+    border-top: 1px solid rgb(16, 91, 105) !important;
+    color: rgb(16, 91, 105) !important;
 }
 aside.Jovenes .top-10 .list-group .list-group-item{
-    border-top: 1px solid rgb(185, 149, 15) ;
-    color: #FFF ;
+    border-top: 1px solid rgb(185, 149, 15) !important;
+    color: #FFF !important;
 }
 aside.Adulto_Contemporaneo .top-10 .list-group .list-group-item span{
     color: #939292;
@@ -830,7 +828,7 @@ aside.Jovenes .top-10 .list-group .list-group-item span{
     opacity: 0.5;
 }
 .list-group-item.active{
-    background:#525453 ;
+    background:#525453 !important;
 }
 .list-group-item.active .play-top-10 i{
     padding: 12px;
@@ -919,7 +917,7 @@ aside.Jovenes .top-10 .list-group .list-group-item span{
 }
 .podcast .podcast-grid a figure div strong{
     color: #D0D0D0;
-    font-weight: 100 ;
+    font-weight: 100 !important;
     display: block;
     height: 49px;
     overflow: hidden;
@@ -1012,7 +1010,7 @@ figure.podcast-mini-player img{
 }
 
 .podcast-player-open .podcast-mini-player #equalizer-podcast-one{
-    width: 50% ;
+    width: 50% !important;
     float: left;
 }
 .podcast-player{
@@ -1079,10 +1077,10 @@ figure.podcast-mini-player img{
 }
 .podcast-progress{
     margin-top:15px;
-    background: #A4FF9F ;
-    border: none ;
-    padding: 1px 1px ;
-    height: 5px ;
+    background: #A4FF9F !important;
+    border: none !important;
+    padding: 1px 1px !important;
+    height: 5px !important;
     position: relative;
     top: 12px;
 }
@@ -1239,7 +1237,7 @@ input[type=range]:focus::-ms-fill-upper {
     background-color: #252525
 }
 .programs-list > .rower{
-    margin-right: 0px ;
+    margin-right: 0px !important;
 }
 
 .programs-list .program img{
@@ -1280,8 +1278,8 @@ input[type=range]:focus::-ms-fill-upper {
     color: #939292;
 }
 .campaign_banner figure{
-    padding: 0px ;
-    margin: 0px ;
+    padding: 0px !important;
+    margin: 0px !important;
 }
 
 
@@ -1293,7 +1291,7 @@ input[type=range]:focus::-ms-fill-upper {
     padding:0px 19%;
 }
 #equalizer.equalizer-quiet{
-    display: none ;
+    display: none !important;
 }
 #equalizer-quiet{
     display: none;
@@ -1305,7 +1303,7 @@ input[type=range]:focus::-ms-fill-upper {
     padding-top: 19px;
 }
 #equalizer-quiet.active{
-    display: block ;
+    display: block !important;
 }
 #equalizer-quiet img{
     width: 93%;
@@ -1547,7 +1545,7 @@ input[type=range]:focus::-ms-fill-upper {
 
     aside{
         width: auto;
-        padding-bottom: 190px ;
+        padding-bottom: 190px !important;
     }
     footer .footer-line{
         padding: 15px 0px;
@@ -1556,8 +1554,8 @@ input[type=range]:focus::-ms-fill-upper {
         /*max-height: 54px;*/
     }
     .top-10 .list-group a figure img{
-        width: 4em ;
-        height: 4em ;
+        width: 4em !important;
+        height: 4em !important;
     }
     .song-information{
         padding-top: 2.5px;
@@ -1621,7 +1619,7 @@ input[type=range]:focus::-ms-fill-upper {
         padding: 0px 70px;
     }
     .podcast .podcast-grid-close{
-        padding: 0px 25px ;
+        padding: 0px 25px !important;
     }
 
     .empresa-interes-item{
@@ -1639,8 +1637,8 @@ input[type=range]:focus::-ms-fill-upper {
 
 }
 .rower{
-    margin-right: -15px ;
-    margin-left: -15px ;
+    margin-right: -15px !important;
+    margin-left: -15px !important;
     display: block;
 }
 .program-playButton{
@@ -1743,5 +1741,3 @@ input[type=range]:focus::-ms-fill-upper {
 /*
 FIN ECUALIZADOR
 */
-
-/* FIN Style Radio Coomeva Old */

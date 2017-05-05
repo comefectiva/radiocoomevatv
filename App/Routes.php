@@ -4,6 +4,7 @@ namespace App\Routes;
 
 error_reporting(E_ALL);
 
+use App\Controller\PodcastController\PodcastController;
 use App\Controllers\CustomLogin\CustomLogin;
 use App\Controllers\HomeController\HomeController;
 use App\Controllers\MediaController\MediaFileController;
@@ -133,5 +134,15 @@ $route::post('/api/media', function(){
     endif;
     return json_encode($result);
 }, array('requireAuth' => false));
+
+
+//OLD RADIOCOOMEVA
+$route::get('/api/podcasts', function(){
+    if(isset($_GET['id'])){
+        return json_encode(PodcastController::getOne($_GET['id']));
+    }else{
+        return json_encode(PodcastController::getAll());
+    }
+}, array('requireAuth'=>false));
 
 $route::render();
