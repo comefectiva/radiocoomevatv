@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb1+deb.cihar.com~xenial.2
--- https://www.phpmyadmin.net/
+-- version 4.5.2
+-- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-05-2017 a las 09:38:00
--- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
--- Versión de PHP: 7.0.15-0ubuntu0.16.04.4
+-- Tiempo de generación: 06-05-2017 a las 02:06:17
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -152,6 +152,33 @@ INSERT INTO `media` (`id`, `name`, `type`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `radios`
+--
+
+CREATE TABLE `radios` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `source` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `target` varchar(255) NOT NULL,
+  `infoPath` varchar(255) NOT NULL,
+  `coverPath` varchar(255) NOT NULL,
+  `internalID` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `radios`
+--
+
+INSERT INTO `radios` (`id`, `name`, `source`, `type`, `target`, `infoPath`, `coverPath`, `internalID`, `created_at`) VALUES
+(1, 'Adulto Contemporaneo', 'http://radio.coomeva.com.co:8090/adulto.mp3', 'audio/mpeg', 'radiocoomeva', '7090/info_n_7090.xml', '7090/caratulas/', '7090', '2017-05-05 22:19:45'),
+(2, 'Instrumental', 'http://radio.coomeva.com.co:8090/instrumental.mp3', 'audio/mpeg', 'radiocoomeva', '7286/info_n_7286.xml', '7286/caratulas/', '7286', '2017-05-05 22:19:45'),
+(3, 'Jovenes', 'http://radio.coomeva.com.co:8090/jovenes.mp3', 'audio/mpeg', 'radiocoomeva', '7284/info_n_7284.xml', '7284/caratulas/', '7284', '2017-05-05 22:19:45');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -191,20 +218,6 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Volcado de datos para la tabla `videos`
---
-
-INSERT INTO `videos` (`id`, `name`, `content`, `image`, `video`, `url`, `sector`, `requireLogin`, `created_at`, `updated_at`) VALUES
-(4, 'video 1', NULL, 1, 2, '/video/1', 'Otro', 0, '2017-04-27 19:24:38', NULL),
-(7, 'video 1', NULL, 1, 2, '/video/2', 'Otro', 0, '2017-04-27 19:44:10', NULL),
-(9, 'video 1', NULL, 1, 2, '/video/3', 'Otro', 0, '2017-04-27 19:45:04', NULL),
-(11, 'video 1', NULL, 1, 2, '/video/4', 'Otro', 0, '2017-04-27 19:45:48', NULL),
-(12, 'video 1', NULL, 1, 2, '/video/5', 'Otro', 0, '2017-04-27 19:46:46', NULL),
-(14, 'video 1', NULL, 1, 2, '/video/6', 'Otro', 0, '2017-04-27 19:49:04', NULL),
-(15, 'video 1', NULL, 1, 2, '/video/7', 'Otro', 0, '2017-04-27 19:51:19', NULL),
-(16, 'video 1', NULL, 1, 2, '/video/8', 'Otro', 0, '2017-04-27 19:51:46', NULL);
-
---
 -- Índices para tablas volcadas
 --
 
@@ -218,6 +231,12 @@ ALTER TABLE `customLogin`
 -- Indices de la tabla `media`
 --
 ALTER TABLE `media`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `radios`
+--
+ALTER TABLE `radios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -249,6 +268,11 @@ ALTER TABLE `customLogin`
 ALTER TABLE `media`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
+-- AUTO_INCREMENT de la tabla `radios`
+--
+ALTER TABLE `radios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
@@ -257,7 +281,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
