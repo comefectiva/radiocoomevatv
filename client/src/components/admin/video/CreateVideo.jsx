@@ -236,7 +236,7 @@ class CreateVideo extends React.Component{
                             </figure>
                         </div>
                         <div style={this.style.uploadBlock}>
-                            <h3>Seleccionar imágen</h3>
+                            <h3>Seleccionar Video</h3>
                             <input type="file" onChange={this.handleVideoUpload.bind(this)}/><br/>
                             <figure>
                                 {this.state.videoLoading ? (

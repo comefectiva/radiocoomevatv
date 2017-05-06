@@ -13,7 +13,7 @@ class Database {
     private static $host = "127.0.0.1";
     private static $dbName = "radiocoomevatv";
     private static $user = "root";
-    private static $pass = "";
+    private static $pass = "comefectiva";
 
     //RadioCoomeva OLD
     private static $dbOld = 'radiocoomeva-old';

@@ -23,6 +23,7 @@ $route::get('/', function(){
     echo HomeController::CreateView('Index');
 }, array('requireAuth' => false));
 
+
 // API ROUTES
 $route::post('/api/login', function(){
     $data = file_get_contents("php://input");
@@ -109,6 +110,12 @@ $route::post('/api/custom-login', function(){
         $result = array("error"=>true, 'message'=>'No se ha subido ningún archivo.');
     endif;
     return json_encode($result);
+}, array('requireAuth' => false));
+
+$route::get('/api/custom-login/check', function(){
+    if(isset($_GET['user'])){
+        return json_encode(CustomLogin::getByUser($_GET['user']));
+    }
 }, array('requireAuth' => false));
 
 /**

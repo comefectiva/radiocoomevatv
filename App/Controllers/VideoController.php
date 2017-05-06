@@ -22,10 +22,10 @@ class VideoController extends Controller{
     }
 
     public static function getByUrl($url){
-        $video = self::getOne("SELECT id,name,image,video,url,sector,requireLogin,created_at FROM videos WHERE url='$url'");
-        $image = self::getOne("SELECT * FROM media WHERE id=".$video['image']);
-        $video = self::getOne("SELECT * FROM media WHERE id=".$video['video']);
-        return json_encode(array('info'=> $video, 'image'=>$image, 'video'=>$video) );
+        $info = self::getOne("SELECT id,name,image,video,url,sector,requireLogin,created_at FROM videos WHERE url='$url'");
+        $image = self::getOne("SELECT * FROM media WHERE id=".$info['image']);
+        $video = self::getOne("SELECT * FROM media WHERE id=".$info['video']);
+        return json_encode(array('info'=> $info, 'image'=>$image, 'video'=>$video) );
     }
 
     public static function createVideo(Array $params){

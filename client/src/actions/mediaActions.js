@@ -23,6 +23,16 @@ export function uploadDocumentRequest(file) {
     };
 }
 
+export function uploadDB(file, video){
+    let data = new FormData();
+    data.append('csv', file);
+    data.append('video', video);
+    data.append('pass', '1234');
+    return (dispatch) => {
+        return axios.post('/api/custom-login', data)
+    };
+}
+
 export function getMedia(id){
     return () => {
         return axios.get('/api/media', {

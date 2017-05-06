@@ -11,6 +11,8 @@ import LoginPage from './components/admin/login/LoginPage';
 import AdminHome from './components/admin/video/VideoList';
 import AdminCreateVideo from './components/admin/video/CreateVideo';
 import EditVideo from './components/admin/video/EditVideo';
+import VideoListDatabase from './components/admin/customLogin/VideoListDatabase';
+import AttachDB from './components/admin/customLogin/AttachDB';
 
 import requireAuth from './utils/requireAuth';
 import Player from "./components/player/Player";
@@ -23,6 +25,8 @@ export default (
             <Route path="videos" component={requireAuth(AdminHome)} />
             <Route path="video/new" component={requireAuth(AdminCreateVideo)} />
             <Route path="video/update/:id" component={requireAuth(EditVideo)}/>
+            <Route path="db" component={requireAuth(VideoListDatabase)}/>
+            <Route path="db/:id" component={requireAuth(AttachDB)}/>
         </Route>
         <Route path="/" components={App}>
             <IndexRoute component={Home} />

@@ -31,3 +31,9 @@ export function editVideo(params){
         return axios.put('/api/videos', params);
     }
 }
+
+export function customLoggin(user){
+    return () => {
+        return axios.get('/api/custom-login/check', {params: {user}});
+    }
+}
